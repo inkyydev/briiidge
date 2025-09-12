@@ -1,0 +1,53 @@
+.main-link-wrapper {
+  min-height: 300vh;
+}
+
+.main-link-wrapper__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7.03vw;
+  min-height: 100vh;
+}
+.main-link-wrapper__anim {
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.main-link-wrapper__links {
+  transform: scale(0.7);
+}
+.main-link-wrapper__links a {
+  font-family: "BankGothic";
+  text-transform: uppercase;
+  font-size: 4.79vw;
+  color: #272727;
+  opacity: 0.8;
+}
+.main-link-wrapper__links a.active {
+  color: #fff;
+}
+.main-link-wrapper__links a:hover {
+  color: #fff;
+}
+
+.section-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+}
+
+@media (max-width: 767px) {
+  .main-link-wrapper__links {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .main-link-wrapper__links a {
+    font-size: 42px;
+  }
+}

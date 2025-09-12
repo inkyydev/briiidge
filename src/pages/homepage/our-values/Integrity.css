@@ -1,0 +1,78 @@
+/* FourColumnMarquee.css */
+.integrity-wrapper-div {
+  --gap: 1vw;
+  --speed: 50s; /* globalna brzina (veće = sporije) */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* svaka kolona je maska */
+.col {
+  position: relative;
+  overflow: hidden;
+  contain: content;
+}
+
+/* traka unutar kolone */
+.col__track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  will-change: transform;
+  animation: marqueeY var(--speed) linear infinite;
+}
+
+/* smjer po koloni (data-dir atribut) */
+.col[data-dir="down"] .col__track {
+  animation-direction: reverse;
+}
+
+/* osnovna “pločica” */
+.tile {
+  width: 100%;
+  overflow: hidden;
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%); /* kao na slici; ukloni ako ne treba */
+}
+
+/* različiti odnosi stranica da dobijemo “mozaik” osjećaj */
+.tile {
+  aspect-ratio: 3/4;
+}
+.tile:nth-child(3n) {
+  aspect-ratio: 1/1;
+}
+.tile:nth-child(4n) {
+  aspect-ratio: 16/9;
+}
+
+@keyframes marqueeY {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .integrity-wrapper-div {
+    --gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding: 0 12px;
+  }
+}
